@@ -1,15 +1,16 @@
 import NavBar from "../../components/NavBar/NavBar";
 import SignIn from "../../components/SignIn/SignIn";
 import Footer from "../../components/Footer/Footer";
+import { Fragment } from "react";
 
 
 const Login = () => {
     return (
-        <div>
+        <Fragment>
             <NavBar />
             <SignIn />
             <Footer />
-        </div>
+        </Fragment>
     )
 }
 

@@ -11,31 +11,35 @@ import "./homepage.scss"
 
 // datas features
 import data from "../../datas/datasFeatures"
+import { Fragment } from "react";
 
 
 
 const Homepage = () => {
     return (
-        <div>
+        <Fragment>
             <NavBar />
-            <Hero />
-            <section className="features">
-                <h2 className="sr-only">Features</h2>
-                    {data.map((elt,index) => {
-                        return ( <Feature 
-                            key={`feature+${index}`}
-                            image = {elt.image}
-                            description = {elt.alt}
-                            title = {elt.title}
-                            text = {elt.text}
+            <main>
+                <Hero />
+                <section className="features">
+                    <h2 className="sr-only">Features</h2>
+                        {data.map((elt,index) => {
+                            return ( <Feature 
+                                key={`feature+${index}`}
+                                image = {elt.image}
+                                description = {elt.alt}
+                                title = {elt.title}
+                                text = {elt.text}
 
-                        />)
-                       
-                    })}
+                            />)
+                        
+                        })}
 
-            </section>
+                </section>
+            </main>
+            
             <Footer />
-        </div>
+        </Fragment>
     )
 }
 
