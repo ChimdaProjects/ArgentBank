@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import EditUserName from "../../components/EditUserName/EditUserName";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
 import Transaction from "../../components/Transaction/Transaction";
@@ -11,6 +12,7 @@ const Profil = () => {
             <NavBar />
             <main className="main bg-dark">
                 <User />
+                <EditUserName />
                 <TransactionsList />
             </main>
             <Footer />

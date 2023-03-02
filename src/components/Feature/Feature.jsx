@@ -4,7 +4,7 @@ const Feature = ({image, description, title, text }) => {
     return (
         <div className="feature-item">
             <img 
-                src={image}
+                src={photo}
                 alt={description} 
                 className="feature-icon" 
             />
