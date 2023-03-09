@@ -5,22 +5,28 @@ const apiUrl = 'http://localhost:3001';
 
 export const loginUser = createAsyncThunk(
     'auth/login',
-    async ({ email, password, firstName, lastName }, {rejectWithValue}) => {
+    async ({ email, password}, {rejectWithValue}) => {
         try {
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify( { email, password } )
             }
         
-    
-            await axios.post(
-                `${apiUrl}/login`,
-                { email, password, firstName, lastName},
+            const {data} = await axios.post
+            (
+                `${apiUrl}/api/v1/user/login`,
+                { email, password },
                 config
             )
+            // user's token in local storage
+            localStorage.setItem('userToken', data.userToken);
+            
+            return data;
+            
         } catch (error) {
-            // return custom message from backend if present
+            // return custom message from API if present
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message);
             } else {
@@ -29,3 +35,4 @@ export const loginUser = createAsyncThunk(
         }
     }
 )
+

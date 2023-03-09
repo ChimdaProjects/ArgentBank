@@ -23,6 +23,9 @@ function App() {
             element= {<Profil />}
             path="/profile"
           />
+          <Route 
+            element={ <Homepage />}
+            path="/logout"/>
         </Routes>
    
     </div>
