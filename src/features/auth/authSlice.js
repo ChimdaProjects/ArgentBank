@@ -19,16 +19,12 @@ const authSlice = createSlice({
     reducers: {
      
       logout: (state) => {
-    
         localStorage.clear() // deletes token from storage
         state.token = null
         state.loading = false
         state.userInfo = null
         state.error = null
         state.success = false
-        state.openEdit = false;
-       
-        
       }
       
     },

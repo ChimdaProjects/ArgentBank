@@ -3,14 +3,16 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const apiUrl = 'http://localhost:3001';
 
+/**
+ * This function fetches data of user (firstname, lastname)
+ */
 export const profileUser = createAsyncThunk(
     'user/profile',
     async (_, {rejectWithValue}) => {
         try {
  
-            const token = localStorage.getItem("userToken");
-            console.log("token", token);
-            const {data} = await axios.post
+            const token = localStorage.getItem("userToken"); 
+            const { data } = await axios.post
             (
                 `${apiUrl}/api/v1/user/profile`,
                 {},
@@ -18,14 +20,10 @@ export const profileUser = createAsyncThunk(
                     headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-
                     }
-                ,
-                
                 }
             )
             
-            console.log("data user", data)
             return data;
             
         } catch (error) {
@@ -35,34 +33,29 @@ export const profileUser = createAsyncThunk(
             } else {
                 return rejectWithValue(error.message)
             }
-            
         }
     }
 )
 
 export const profileUserEdit = createAsyncThunk(
     'user/profileEdit',
-    async ({firstName, lastName}, {rejectWithValue}) => {
+    async ({ firstName, lastName }, { rejectWithValue }) => {
         try {
  
             const token = localStorage.getItem("userToken");
-            console.log("token", token);
             const {data} = await axios.put
             (
                 `${apiUrl}/api/v1/user/profile`,
-                {firstName, lastName},
+                { firstName, lastName },
                 {
-                    headers: {
+                    headers: 
+                    {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-
                     }
-                ,
-                
                 }
             )
-            
-            console.log("data user edit", data)
+            //console.log("data user edit", data)
             return data;
             
         } catch (error) {

@@ -7,6 +7,7 @@ import { NavLink, redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from "../../features/auth/authSlice";
+import { setOpenEdit } from "../../features/user/userSlice";
 
 
 const NavBar = ({success}) => {
@@ -14,6 +15,7 @@ const NavBar = ({success}) => {
     const dispatch = useDispatch();
     const handleLogout = () => {
         dispatch(logout());
+        dispatch(setOpenEdit(false))
     }
     const {userDatas} = useSelector((state) => state.user)
     return (
