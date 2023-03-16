@@ -4,12 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 const User = () => {
     const dispatch = useDispatch();
-    const {userDatas} = useSelector((state) => state.user)
-
+    const {userDatas, openEdit} = useSelector((state) => state.user)
+    const handleEdit = () => {
+        dispatch(setOpenEdit());
+       
+    if (openEdit) {
+        const btnEdit = document.querySelector(".edit-button");
+        btnEdit.style.display ="none"
+    }
+    }
     return (
         <div className="header">
-            <h1>Welcome back<br />{userDatas.firstName} {userDatas.lastName} ! </h1>
-            <button className="edit-button" onClick={() => dispatch(setOpenEdit()) }>Edit Name</button>
+            <h1 className={openEdit? "color-bk" : ""}>Welcome back<br />{openEdit ? "" : `${userDatas.firstName} ${userDatas.lastName} !`}  </h1>
+            <button className="edit-button" onClick={handleEdit }>Edit Name</button>
       </div>  
    
       );

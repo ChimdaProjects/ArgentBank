@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { profileUser } from "./userActions";
+import { profileUser, profileUserEdit } from "./userActions";
 
 const initialState = {
     userDatas:{},
@@ -37,6 +37,22 @@ const userSlice = createSlice({
           },
 
           [profileUser.rejected]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+            
+          },
+          /**** EDIT USER'S DATAS ******** */
+          [profileUserEdit.pending]: (state) => {
+            state.loading = true
+            state.error = null
+          },
+          [profileUserEdit.fulfilled]: (state, { payload }) => {
+            state.loading = false
+            state.userDatas = payload.body
+            state.userToken = payload.userToken
+          },
+
+          [profileUserEdit.rejected]: (state, { payload }) => {
             state.loading = false
             state.error = payload
             

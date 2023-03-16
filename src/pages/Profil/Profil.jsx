@@ -8,29 +8,29 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setUserDatas } from "../../features/user/userSlice";
 import { profileUser } from "../../features/user/userActions";
-
+import "./profil.scss"
 const Profil = () => {
     const dispatch = useDispatch();
- 
-    /*const data = useSelector((state) => state.userDatas)
-    useEffect(() => { 
-       dispatch(profileUser(data))
-    }, [])*/
-
-
-    const {success } = useSelector(
+    // state
+    const { success } = useSelector(
         (state) => state.auth
     )
-    const {openEdit} = useSelector(
+    const { openEdit } = useSelector(
         (state) => state.user
     )
+    const data = useSelector((state) => state.userDatas);
+    
+    // fetch user's data at first render
+    useEffect(() => { 
+       dispatch(profileUser(data))
+    }, [])
+
     return ( 
         <Fragment>
             <NavBar  success={success}/>
-            <main className="main bg-dark">
+            <main className={openEdit ? "main bg-grey" : "main bg-dark" }>
                 <User />
-                {openEdit && <EditUserName /> }
-                
+                { openEdit && <EditUserName /> }
                 <TransactionsList />
             </main>
             <Footer />

@@ -7,8 +7,7 @@ export const profileUser = createAsyncThunk(
     'user/profile',
     async (_, {rejectWithValue}) => {
         try {
-           
-           
+ 
             const token = localStorage.getItem("userToken");
             console.log("token", token);
             const {data} = await axios.post
@@ -27,6 +26,43 @@ export const profileUser = createAsyncThunk(
             )
             
             console.log("data user", data)
+            return data;
+            
+        } catch (error) {
+            // return custom message from API if present
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message);
+            } else {
+                return rejectWithValue(error.message)
+            }
+            
+        }
+    }
+)
+
+export const profileUserEdit = createAsyncThunk(
+    'user/profileEdit',
+    async ({firstName, lastName}, {rejectWithValue}) => {
+        try {
+ 
+            const token = localStorage.getItem("userToken");
+            console.log("token", token);
+            const {data} = await axios.put
+            (
+                `${apiUrl}/api/v1/user/profile`,
+                {firstName, lastName},
+                {
+                    headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+
+                    }
+                ,
+                
+                }
+            )
+            
+            console.log("data user edit", data)
             return data;
             
         } catch (error) {

@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import "./transaction.scss"
 
 const Transaction = () => {
+  const {openEdit} = useSelector((state) => state.user)
     return ( 
         <section className="account">
         <div className="account-content-wrapper">
@@ -8,8 +10,8 @@ const Transaction = () => {
           <p className="account-amount">$2,082.79</p>
           <p className="account-amount-description">Available Balance</p>
         </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
+        <div className={openEdit? "account-content-wrapper-edit cta":"account-content-wrapper cta"}>
+          <button className={openEdit? "transaction-button-edit":"transaction-button"}>View transactions</button>
         </div>
       </section>
      );
