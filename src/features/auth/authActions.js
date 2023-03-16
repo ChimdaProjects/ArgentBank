@@ -20,8 +20,9 @@ export const loginUser = createAsyncThunk(
                 { email, password },
                 config
             )
+            console.log("data", data);
             // user's token in local storage
-            localStorage.setItem('userToken', data.userToken);
+            localStorage.setItem('userToken', data.body.token);
             
             return data;
             
@@ -36,3 +37,14 @@ export const loginUser = createAsyncThunk(
     }
 )
 
+/*export const getData = (token) => fetch(process.env.REACT_APP_BACKEND_API + "user/profile", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      Authorization: "Bearer " + token
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    return data
+  })*/

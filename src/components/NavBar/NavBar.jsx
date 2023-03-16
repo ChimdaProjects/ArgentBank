@@ -2,7 +2,7 @@
 import "./navBar.scss"
 //img
 import logo from "../../assets/argentBankLogo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, redirect } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,9 +10,11 @@ import { useEffect } from "react";
 
 
 const NavBar = ({success}) => {
-    const {userInfo, logout} = useSelector((state) => state.auth)
+    const {logout} = useSelector((state) => state.auth)
     const dispatch = useDispatch();
-
+    const handleLogout = () => {
+        dispatch(logout());
+    }
     return (
         <nav className="main-nav">
             <NavLink className="main-nav-logo" to="/">
@@ -25,11 +27,13 @@ const NavBar = ({success}) => {
             </NavLink>
             <div> 
                 { success ? (
-                    <NavLink className="main-nav-item" to="/logout" >
-                    <i className="fa fa-sign-out" onClick={()=> dispatch(logout())} ></i>
+                
+                    <NavLink className="main-nav-item" to="/logout"  onClick={handleLogout}>
+                    <i className="fa fa-sign-out"></i>
                         Sign out
                         
                     </NavLink>
+                 
                 ) :
                 (
                     <NavLink className="main-nav-item" to="/signin">

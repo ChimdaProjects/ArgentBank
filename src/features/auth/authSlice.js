@@ -9,7 +9,7 @@ const userToken = localStorage.getItem('userToken')
 const initialState = {
     loading: false,
     userInfo: {},
-    userToken: userToken,
+    token: userToken,
     error: null,
     success: false,
 }
@@ -20,11 +20,13 @@ const authSlice = createSlice({
     reducers: {
      
       logout: (state) => {
-        localStorage.removeItem('userToken') // deletes token from storage
+        state.userToken = null
+        localStorage.clear() // deletes token from storage
         state.loading = false
         state.userInfo = null
-        state.userToken = null
         state.error = null
+        state.success = false
+        
       }
       
     },
@@ -38,7 +40,7 @@ const authSlice = createSlice({
             state.loading = false
             state.userInfo = payload
             state.success = true
-            state.userToken = payload.userToken
+            state.userToken = payload.token
           },
           [loginUser.rejected]: (state, { payload }) => {
             state.loading = false
@@ -48,4 +50,5 @@ const authSlice = createSlice({
     },
 })
 
+export const {logout} = authSlice.actions;
 export default authSlice.reducer;
