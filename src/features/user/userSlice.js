@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { profileUser } from "./userActions";
 
 const initialState = {
-    userDatas:null
+    userDatas:{},
+    openEdit: false
 }
 
 const userSlice = createSlice({
@@ -11,6 +12,14 @@ const userSlice = createSlice({
     reducers: {
         setUserDatas: (state, {payload}) => {
             state.userDatas = payload;
+        },
+
+        setOpenEdit :(state) => {
+            state.openEdit = !state.openEdit;
+        },
+
+        editProfile:(state, {payload}) => {
+            state.userDatas = payload
         }
      
       
@@ -23,7 +32,7 @@ const userSlice = createSlice({
           },
           [profileUser.fulfilled]: (state, { payload }) => {
             state.loading = false
-            state.userDatas = payload
+            state.userDatas = payload.body
             state.userToken = payload.userToken
           },
 
@@ -35,5 +44,5 @@ const userSlice = createSlice({
     },
 })
 
-export const {setUserDatas} = userSlice.actions;
+export const {setUserDatas, setOpenEdit, editProfile} = userSlice.actions;
 export default userSlice.reducer;

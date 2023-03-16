@@ -15,6 +15,7 @@ const NavBar = ({success}) => {
     const handleLogout = () => {
         dispatch(logout());
     }
+    const {userDatas} = useSelector((state) => state.user)
     return (
         <nav className="main-nav">
             <NavLink className="main-nav-logo" to="/">
@@ -27,13 +28,17 @@ const NavBar = ({success}) => {
             </NavLink>
             <div> 
                 { success ? (
-                
-                    <div className="main-nav-item"  onClick={handleLogout}>
-                    <i className="fa fa-sign-out"></i>
-                        Sign out
+                    <>
+                        <a className="main-nav-item"> 
+                            <i className="fa fa-user-circle"></i>
+                                {userDatas.firstName}
+                        </a>
                         
-                    </div>
-                 
+                        <a className="main-nav-item"  onClick={handleLogout}>
+                            <i className="fa fa-sign-out"></i>
+                                Sign out
+                        </a>
+                    </>
                 ) :
                 (
                     <NavLink className="main-nav-item" to="/signin">

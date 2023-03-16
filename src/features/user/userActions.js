@@ -8,23 +8,22 @@ export const profileUser = createAsyncThunk(
     async (_, {rejectWithValue}) => {
         try {
            
-            const config = {
-                headers : 
-                {
-                    "Content-Type": "application/json",
-                    "Authorization": localStorage.getItem("userToken")
-                    
-                    
-                },
-                
-                
-                
-            }
-        
+           
+            const token = localStorage.getItem("userToken");
+            console.log("token", token);
             const {data} = await axios.post
             (
                 `${apiUrl}/api/v1/user/profile`,
-                config
+                {},
+                {
+                    headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+
+                    }
+                ,
+                
+                }
             )
             
             console.log("data user", data)

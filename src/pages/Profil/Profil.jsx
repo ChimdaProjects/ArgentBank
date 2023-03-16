@@ -26,12 +26,16 @@ const Profil = () => {
     const {success } = useSelector(
         (state) => state.auth
     )
+    const {openEdit} = useSelector(
+        (state) => state.user
+    )
     return ( 
         <Fragment>
             <NavBar  success={success}/>
             <main className="main bg-dark">
-                <User  />
-                <EditUserName />
+                <User />
+                {openEdit && <EditUserName /> }
+                
                 <TransactionsList />
             </main>
             <Footer />
