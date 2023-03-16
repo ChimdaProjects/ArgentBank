@@ -6,11 +6,11 @@ import { NavLink, redirect } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useEffect } from "react";
+import { logout } from "../../features/auth/authSlice";
 
 
 const NavBar = ({success}) => {
-    const {logout} = useSelector((state) => state.auth)
+
     const dispatch = useDispatch();
     const handleLogout = () => {
         dispatch(logout());
@@ -28,11 +28,11 @@ const NavBar = ({success}) => {
             <div> 
                 { success ? (
                 
-                    <NavLink className="main-nav-item" to="/logout"  onClick={handleLogout}>
+                    <div className="main-nav-item"  onClick={handleLogout}>
                     <i className="fa fa-sign-out"></i>
                         Sign out
                         
-                    </NavLink>
+                    </div>
                  
                 ) :
                 (

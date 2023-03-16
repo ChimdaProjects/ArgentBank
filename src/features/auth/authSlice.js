@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser } from "./authActions";
+import { Navigate } from "react-router-dom";
 
-//initialize userToken from local storage
-const userToken = localStorage.getItem('userToken')
-? localStorage.getItem("userToken")
-: null;
+//initialize token from local storage
+const userToken = localStorage.getItem('userToken')? localStorage.getItem("userToken"): null;
 
 const initialState = {
     loading: false,
@@ -20,12 +19,14 @@ const authSlice = createSlice({
     reducers: {
      
       logout: (state) => {
-        state.userToken = null
+    
         localStorage.clear() // deletes token from storage
+        state.token = null
         state.loading = false
         state.userInfo = null
         state.error = null
         state.success = false
+       
         
       }
       
