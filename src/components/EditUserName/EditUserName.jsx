@@ -17,15 +17,14 @@ const EditUserName = () => {
             firstName : inputFirstName.current.value,
             lastName : inputLastName.current.value,
         }
-        axios.put("http://localhost:3001/api/v1/user/profile", data).then(() => {
-            dispatch(editProfile(data))
-        })
+        dispatch(editProfile(data))
         formRef.current.reset();
         dispatch(setOpenEdit(false));
     }
     const cancelDisplayFormEdit = () => {
         const form = document.querySelector(".editUser");
         form.style.display="none";
+        
     }
     return ( 
         <div className="editUser">

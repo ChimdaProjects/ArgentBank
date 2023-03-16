@@ -11,16 +11,11 @@ import { profileUser } from "../../features/user/userActions";
 
 const Profil = () => {
     const dispatch = useDispatch();
-    /*const getUserDatas = () => {
-        axios
-        .post("http://localhost:3001/api/v1/user/profile")
-        .then((res) => dispatch(setUserDatas(res.data)));
-       
-    }*/
-    const data = useSelector((state) => state.userDatas)
+ 
+    /*const data = useSelector((state) => state.userDatas)
     useEffect(() => { 
        dispatch(profileUser(data))
-    }, [])
+    }, [])*/
 
 
     const {success } = useSelector(
