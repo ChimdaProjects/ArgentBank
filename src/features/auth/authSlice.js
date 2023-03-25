@@ -11,6 +11,7 @@ const initialState = {
     token: userToken,
     error: null,
     success: false,
+    
 }
 
 const authSlice = createSlice({
@@ -25,6 +26,7 @@ const authSlice = createSlice({
         state.userInfo = null
         state.error = null
         state.success = false
+        state.openEdit = false
       }
       
     },
