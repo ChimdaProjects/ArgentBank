@@ -41,7 +41,7 @@ const NavBar = ({success}) => {
                                 {userDatas.firstName}
                         </button>
                         
-                        <button className="main-nav-item"  href="" onClick={handleLogout}>
+                        <button className="main-nav-item" onClick={handleLogout}>
                             <i className="fa fa-sign-out"></i>
                                 Sign out
                         </button>
