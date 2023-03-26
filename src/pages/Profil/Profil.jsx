@@ -6,7 +6,7 @@ import TransactionsList from "../../components/TransactionsList/TransactionsList
 import User from "../../components/User/User"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setUserDatas } from "../../features/user/userSlice";
+import { setOpenEdit, setUserDatas } from "../../features/user/userSlice";
 import { profileUser } from "../../features/user/userActions";
 import "./profil.scss"
 import Loading from "../../components/Loading/Loading";
@@ -23,7 +23,8 @@ const Profil = () => {
     
     // fetch user's data at first render
     useEffect(() => { 
-       dispatch(profileUser(data))
+       dispatch(profileUser(data));
+      
     }, [])
 
     return ( 

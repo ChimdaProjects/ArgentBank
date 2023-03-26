@@ -1,5 +1,5 @@
 import "./editUserName.scss"
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenEdit } from "../../features/user/userSlice";
 import { profileUserEdit } from "../../features/user/userActions";
@@ -14,7 +14,7 @@ const EditUserName = () => {
 
     const dispatch = useDispatch();
     const {userDatas} = useSelector((state) => state.user);
-
+   
     // Submit datas when the user clicks to save button
     const handleSubmitEdit = () => {
         // datas of inputs

@@ -5,7 +5,7 @@ const initialState = {
     userDatas:{},
     openEdit: false
 }
-
+console.log("state", initialState)
 const userSlice = createSlice({
     name: "user",
     initialState,
@@ -21,25 +21,25 @@ const userSlice = createSlice({
         editProfile:(state, {payload}) => {
             state.userDatas = payload
         }
-     
-      
-      
+
     },
     extraReducers: {
         [profileUser.pending]: (state) => {
             state.loading = true
             state.error = null
+            state.openEdit = false
           },
           [profileUser.fulfilled]: (state, { payload }) => {
             state.loading = false
             state.userDatas = payload.body
             state.userToken = payload.userToken
+            state.openEdit = false
           },
 
           [profileUser.rejected]: (state, { payload }) => {
             state.loading = false
             state.error = payload
-            
+            state.openEdit = false
           },
           /**** EDIT USER'S DATAS ******** */
           [profileUserEdit.pending]: (state) => {
