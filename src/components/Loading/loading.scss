@@ -1,11 +1,11 @@
-html, body {
-    height: 100%;
+.loading {
+    height: 1000px;
     width: 100%;
     margin: 0;
     padding: 0;
     font-size: 100%;
-    background: #191a1a;
     text-align: center;
+    top: 10em;
   }
   
   .loading {
@@ -13,13 +13,13 @@ html, body {
     padding: 0;
     font-family: ‘Arial Narrow’, sans-serif;
     font-weight: 100;
-    font-size: 1.1em;
-    color: #a3e1f0;
+    font-size: 1.7em;
+    color: #0c5201;
   }
   
   span {
     position: relative;
-    top: 0.63em;  
+    top: 1em;  
     display: inline-block;
     text-transform: uppercase;  
     opacity: 0;

@@ -2,22 +2,29 @@
 import "./navBar.scss"
 //img
 import logo from "../../assets/argentBankLogo.png";
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from "../../features/auth/authSlice";
 import { setOpenEdit } from "../../features/user/userSlice";
 
-
+/**
+ * Display the navbar of the site
+ * @param { boolean } success - state 
+ * @returns { JSX } react component
+ */
 const NavBar = ({success}) => {
-
+    // state selector
+    const {userDatas} = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    
+    // logout when the user clicks to logout button
     const handleLogout = () => {
         dispatch(logout());
         dispatch(setOpenEdit(false))
     }
-    const {userDatas} = useSelector((state) => state.user)
+
     return (
         <nav className="main-nav">
             <NavLink className="main-nav-logo" to="/">

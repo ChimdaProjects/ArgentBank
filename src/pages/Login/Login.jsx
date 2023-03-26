@@ -5,10 +5,11 @@ import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Loading from "../../components/Loading/Loading";
 
 
 const Login = () => {
-    const {userInfo, success } = useSelector(
+    const {userInfo, success, loading } = useSelector(
         (state) => state.auth
     )
     const navigate = useNavigate();
@@ -22,7 +23,12 @@ const Login = () => {
     return (
         <Fragment>
             <NavBar success={success} />
-            <SignIn />
+            { 
+                loading ? 
+                    <Loading /> :
+                    <SignIn />
+            }
+            
             <Footer />
         </Fragment>
     )

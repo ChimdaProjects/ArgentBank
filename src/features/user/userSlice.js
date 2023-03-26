@@ -60,5 +60,5 @@ const userSlice = createSlice({
     },
 })
 
-export const {setUserDatas, setOpenEdit, editProfile} = userSlice.actions;
+export const { setUserDatas, setOpenEdit, editProfile } = userSlice.actions;
 export default userSlice.reducer;

@@ -326,12 +326,18 @@ definitions:
       transactionId:
         type: integer
         description: id of the transaction
+      date: 
+        type: integer
+        description: date of the transaction
       amount: 
         type: integer
         description: amount of the transaction
-      label: 
+      balance:
+        type: integer
+        description: balance of the account
+      category: 
         type: string
-        description: label of the transaction
+        description: category of the transaction
       informations:
         type: string
         description: details of the transaction
@@ -348,12 +354,18 @@ definitions:
           transactionId:
             type: integer
             description: id of the transaction
+          date: 
+            type: integer
+            description: date of the transaction
           amount: 
             type: integer
             description: amount of the transaction
-          label: 
+          balance:
+            type: integer
+            description: balance of the account
+          category: 
             type: string
-            description: label of the transaction
+            description: category of the transaction
           informations:
             type: string
             description: details of the transaction
@@ -363,6 +375,9 @@ definitions:
       transactionId:
         type: integer
         description: id of the transaction
+      category:
+          type: string
+          description: category of the transaction
       informations: 
         type: string
         description: custom details of the transaction
@@ -379,6 +394,9 @@ definitions:
           transactionId:
             type: integer
             description: id of the transaction
+          category:
+            type: string
+            description: category of the transaction
           informations:
             type: string
             description: custom details of the transaction

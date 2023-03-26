@@ -9,10 +9,11 @@ import axios from "axios";
 import { setUserDatas } from "../../features/user/userSlice";
 import { profileUser } from "../../features/user/userActions";
 import "./profil.scss"
+import Loading from "../../components/Loading/Loading";
 const Profil = () => {
     const dispatch = useDispatch();
     // state
-    const { success } = useSelector(
+    const { success, loading } = useSelector(
         (state) => state.auth
     )
     const { openEdit } = useSelector(
@@ -27,12 +28,15 @@ const Profil = () => {
 
     return ( 
         <Fragment>
-            <NavBar  success={success}/>
-            <main className={openEdit ? "main bg-grey" : "main bg-dark" }>
-                <User />
-                { openEdit && <EditUserName /> }
-                <TransactionsList />
-            </main>
+            <NavBar  success= { success } />
+            { loading ? <Loading /> : 
+            <main className= { openEdit ? "main bg-grey" : "main bg-dark" } >
+                 <User />
+                 { openEdit && <EditUserName /> }
+                 <TransactionsList />
+             </main>
+            }
+           
             <Footer />
         </Fragment>
       );

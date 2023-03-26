@@ -4,17 +4,21 @@ import {useForm} from "react-hook-form"
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser } from "../../features/auth/authActions";
 
+/**
+ * Display the signin form
+ * @returns { JSX } react component
+ */
 const SignIn = () => {
-    
+    // state selector
     const { loading, error} = useSelector(
         (state) => state.auth
     )
     const dispatch = useDispatch();
-
+    // useForm 
     const {register, handleSubmit} = useForm();
     
     const submitForm = (data) => {
-        console.log("data", data)
+        // dispatch action to login the user
         dispatch(loginUser(data));
     }
    

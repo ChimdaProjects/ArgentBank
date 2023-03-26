@@ -14,14 +14,18 @@ import icon2 from "../../assets/icon-money.png"
 import icon3 from "../../assets/icon-security.png"
 
 import { Fragment } from "react";
-
+import Loading from "../../components/Loading/Loading";
+import { useSelector } from "react-redux";
 
 
 const Homepage = () => {
+    const { loading } = useSelector((state) => state.auth)
     return (
         <Fragment>
             <NavBar />
+            { loading ? <Loading /> :
             <main>
+                 
                 <Hero />
                 <section className="features">
                     <h2 className="sr-only">Features</h2>
@@ -45,10 +49,9 @@ const Homepage = () => {
                         text="We use top of the line encryption to make sure your data and money
                         is always safe."
                     />
-
                 </section>
             </main>
-            
+            }
             <Footer />
         </Fragment>
     )
