@@ -1,6 +1,6 @@
 // react
-import { NavLink, redirect } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 // features
 import { logout } from "../../features/auth/authSlice";
 // style
@@ -21,7 +21,6 @@ const NavBar = ({success}) => {
     // logout when the user clicks to logout button
     const handleLogout = () => {
         dispatch(logout());
-        redirect("/")
     }
 
     return (
@@ -37,15 +36,15 @@ const NavBar = ({success}) => {
             <div> 
                 { success ? (
                     <>
-                        <a className="main-nav-item" href=""> 
+                        <button className="main-nav-item" > 
                             <i className="fa fa-user-circle"></i>
                                 {userDatas.firstName}
-                        </a>
+                        </button>
                         
-                        <a className="main-nav-item"  href="" onClick={handleLogout}>
+                        <button className="main-nav-item"  href="" onClick={handleLogout}>
                             <i className="fa fa-sign-out"></i>
                                 Sign out
-                        </a>
+                        </button>
                     </>
                 ) :
                 (
