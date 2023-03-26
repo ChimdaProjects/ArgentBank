@@ -10,7 +10,7 @@ import { loginUser } from "../../features/auth/authActions";
  */
 const SignIn = () => {
     // state selector
-    const { loading, error} = useSelector(
+    const {error} = useSelector(
         (state) => state.auth
     )
     const dispatch = useDispatch();
@@ -61,6 +61,9 @@ const SignIn = () => {
                         </label>
                     </div>
                     <button type="submit" className="sign-in-button">Sign In</button>
+                    {error && (
+                        <p className="error">We can't sign in to your account!</p>
+                    )}
                 </form>
         </section>
     </main>
