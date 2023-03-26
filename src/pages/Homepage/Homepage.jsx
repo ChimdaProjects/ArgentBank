@@ -17,7 +17,10 @@ import { Fragment } from "react";
 import Loading from "../../components/Loading/Loading";
 import { useSelector } from "react-redux";
 
-
+/**
+ * Display the homepage of argent bank
+ * @returns {JSX} react component
+ */
 const Homepage = () => {
     const { loading } = useSelector((state) => state.auth)
     return (

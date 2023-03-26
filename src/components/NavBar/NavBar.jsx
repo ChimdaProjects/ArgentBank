@@ -1,13 +1,12 @@
+// react
+import { NavLink, redirect } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+// features
+import { logout } from "../../features/auth/authSlice";
 // style
 import "./navBar.scss"
 //img
 import logo from "../../assets/argentBankLogo.png";
-import { NavLink } from "react-router-dom";
-
-import { useDispatch, useSelector } from 'react-redux';
-
-import { logout } from "../../features/auth/authSlice";
-import { setOpenEdit } from "../../features/user/userSlice";
 
 /**
  * Display the navbar of the site
@@ -22,7 +21,7 @@ const NavBar = ({success}) => {
     // logout when the user clicks to logout button
     const handleLogout = () => {
         dispatch(logout());
-        dispatch(setOpenEdit(false))
+        redirect("/")
     }
 
     return (
@@ -38,12 +37,12 @@ const NavBar = ({success}) => {
             <div> 
                 { success ? (
                     <>
-                        <a className="main-nav-item"> 
+                        <a className="main-nav-item" href=""> 
                             <i className="fa fa-user-circle"></i>
                                 {userDatas.firstName}
                         </a>
                         
-                        <a className="main-nav-item"  onClick={handleLogout}>
+                        <a className="main-nav-item"  href="" onClick={handleLogout}>
                             <i className="fa fa-sign-out"></i>
                                 Sign out
                         </a>

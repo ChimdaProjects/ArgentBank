@@ -55,7 +55,7 @@ export const profileUserEdit = createAsyncThunk(
                     }
                 }
             )
-            //console.log("data user edit", data)
+            
             return data;
             
         } catch (error) {
